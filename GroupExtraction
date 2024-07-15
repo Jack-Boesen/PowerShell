@@ -1,0 +1,13 @@
+# Install required modules (if not already installed)
+Install-Module AzureAD -Force -AllowClobber
+Install-Module MicrosoftTeams -Force -AllowClobber
+
+# Connect to Azure AD and Microsoft Teams
+Connect-AzureAD
+Connect-MicrosoftTeams
+
+# Retrieve and export the list of Teams
+$teams = Get-Team
+$teams | Select-Object DisplayName, Description, MailNickname | Export-Csv -Path "C:\Users\JackBoesen\OneDrive - Kru-Marc Inc\Kru-Marc Inc (Individual)" -NoTypeInformation
+
+Write-Output "Group lists have been exported successfully."
